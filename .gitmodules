@@ -1,0 +1,6 @@
+[submodule "external-libs/LowPower"]
+	path = external-libs/LowPower
+	url = https://github.com/rocketscream/Low-Power.git
+[submodule "external-libs/TrueRandom"]
+	path = external-libs/TrueRandom
+	url = https://github.com/sirleech/TrueRandom.git
