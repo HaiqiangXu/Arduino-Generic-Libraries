@@ -1,9 +1,9 @@
 #include <arduino.h>
 #include <SoftwareSerial.h>
 
-enum class EBluetoothAdapter { HC_05, HC_06 };	//HC_06 is both Master/Slave. HC_05 only Slave
+enum class EBluetoothAdapter { HC_05, HC_06 };	//HC_05 is both Master/Slave. HC_06 only Slave
 enum class EATCommand { AT, AT_VERSION, AT_DEVICE_NAME, AT_BAUD, AT_PIN, AT_PARITY,	//common for both adapters
-AT_RESET, AT_ROLE, AT_CMODE, AT_BIND, AT_STATE, AT_PAIR, AT_LINK,				//specific for HC-05
+AT_RESET, AT_ROLE, AT_CMODE, AT_BIND, AT_STATE, AT_PAIR, AT_LINK,	//specific for HC-05
 AT_DELETE_PAIRED, AT_DELETE_ALL_PAIRED,	AT_DISCONNECT
 /*AT_IPSCAN, AT_SNIFF, AT_START_ENERGY, AT_STOP_ENERGY*/ };
 enum class ECommandType { Unknown, ArrayBytes, StringCommand };
