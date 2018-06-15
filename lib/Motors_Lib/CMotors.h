@@ -2,6 +2,7 @@
 
 enum class EMovements { Stop, Up, Down, LeftUp, LeftDown, RightUp, RightDown };
 enum class ESpeedMode { None, Slow, Normal, Fast, Turbo }; // sets max. speed range, instead of 255, to values {0, 55, 110, 165, 220} by multiplying with SPEED_UNIT
+enum class ETurnMode { One, Both };		//how to change direction: One like a tank with only one axis in movement, or Both with one axis faster than the other axis
 const int SPEED_UNIT = 55;	//base value for max. speed which is calculated SPEED_UNIT * int(ESpeedMode)
 
 class CMotors
@@ -11,6 +12,7 @@ public:
 	CMotors()
 	{
 		m_CurrentMovement = EMovements::Stop;
+		m_CurrentTurnMode = ETurnMode::Both;
 		SetSpeedMode(ESpeedMode::Normal);
 		m_bIsVirtualMotor = true;
 	}
@@ -98,12 +100,13 @@ public:
 		int m_iPinENA, m_iPinENB;			//config pins speed
 		EMovements m_CurrentMovement;
 		ESpeedMode m_CurrentSpeedMode;
+		ETurnMode m_CurrentTurnMode;
 		int m_iCurrentSpeed;
 		int m_iMaxSpeed;
 		bool m_bIsVirtualMotor;
 
 		// Private methods
 		void SetMovement(EMovements movement);
-		void SetSpeed(int iSpeed);
-		void SetSpeed(int iSpeedLeft, int iSpeedRight);
+		void SetSpeed(int iSpeed, EMovements movement);
+		void SetSpeed(int iSpeedLeft, int iSpeedRight, EMovements movement);
 };

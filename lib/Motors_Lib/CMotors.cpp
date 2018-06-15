@@ -8,6 +8,7 @@ const int SECTION = 70;
 
 void CMotors::ProcessMotors(String sCommand)
 {
+	//process command and set movements according to command
 	if (sCommand == "u")
 	{
 		SetMovement(EMovements::Up);
@@ -41,7 +42,7 @@ void CMotors::ProcessMotors(String sCommand)
 		return;
 	}
 
-	SetSpeed(192);	//constant speed for this kind of processing
+	SetSpeed(192, m_CurrentMovement);	//constant speed for this kind of processing
 	delay(50);		//wait some time in order to give time for motor relays setting the new state
 }
 
@@ -51,10 +52,9 @@ void CMotors::ProcessMotors(const byte valueX, const byte valueY)
 	EMovements movement;
 
 	//process command
-	iSpeed = map( abs(valueY - 127) * 2 , 0, 255, 50, m_iMaxSpeed );
+	iSpeed = map( abs(valueY - 127) * 2 , 0, 255, SPEED_UNIT, m_iMaxSpeed );	//Speed range: [55, (55, 110, 165, 220)]
 	if (valueY > (CENTER_Y_MINUS) && valueY < (CENTER_Y_PLUS))	//Stop -> [Y = 98 to Y = 157]
 	{
-		iSpeed = 0;
 		movement = EMovements::Stop;
 	}
 	else
@@ -92,14 +92,13 @@ void CMotors::ProcessMotors(const byte valueX, const byte valueY)
 	}
 
 	//set speed accordingly to command
-	//TODO: for cases Left Up/Down and Right Up/Down, set speeds at both axes
-	SetSpeed(iSpeed);
+	SetSpeed(iSpeed, movement);
 
 	//set movements according to command
 	if (m_CurrentMovement != movement)
 	{
 		SetMovement(movement);
-		delay(50);     //wait some time in order to give time for motor relays setting the new state
+		delay(30);     //wait some time in order to give time for motor relays setting the new state
 	}
 }
 
@@ -113,44 +112,73 @@ void CMotors::SetMovement(EMovements movement)
 	int iRightValue1, iRightValue2;
 
 	m_CurrentMovement = movement;
-	switch (m_CurrentMovement)
+	if (m_CurrentTurnMode == ETurnMode::One)
 	{
-		case EMovements::LeftUp:
-			iLeftValue1 = 0;  iLeftValue2 = 0;
-			iRightValue1 = 0; iRightValue2 = 1;
-			break;
+		switch (m_CurrentMovement)
+		{
+			case EMovements::LeftUp:
+				iLeftValue1 = 0;  iLeftValue2 = 0;
+				iRightValue1 = 0; iRightValue2 = 1;
+				break;
 
-		case EMovements::RightUp:
-			iLeftValue1 = 0;  iLeftValue2 = 1;
-			iRightValue1 = 0; iRightValue2 = 0;
-			break;
+			case EMovements::RightUp:
+				iLeftValue1 = 0;  iLeftValue2 = 1;
+				iRightValue1 = 0; iRightValue2 = 0;
+				break;
 
-		case EMovements::Up:
-			iLeftValue1 = 0;  iLeftValue2 = 1;
-			iRightValue1 = 0; iRightValue2 = 1;
-			break;
+			case EMovements::Up:
+				iLeftValue1 = 0;  iLeftValue2 = 1;
+				iRightValue1 = 0; iRightValue2 = 1;
+				break;
 
-		case EMovements::LeftDown:
-			iLeftValue1 = 0;  iLeftValue2 = 0;
-			iRightValue1 = 1; iRightValue2 = 0;
-			break;
+			case EMovements::LeftDown:
+				iLeftValue1 = 0;  iLeftValue2 = 0;
+				iRightValue1 = 1; iRightValue2 = 0;
+				break;
 
-		case EMovements::RightDown:
-			iLeftValue1 = 1;  iLeftValue2 = 0;
-			iRightValue1 = 0; iRightValue2 = 0;
-			break;
+			case EMovements::RightDown:
+				iLeftValue1 = 1;  iLeftValue2 = 0;
+				iRightValue1 = 0; iRightValue2 = 0;
+				break;
 
-		case EMovements::Down:
-			iLeftValue1 = 1;  iLeftValue2 = 0;
-			iRightValue1 = 1; iRightValue2 = 0;
-			break;
+			case EMovements::Down:
+				iLeftValue1 = 1;  iLeftValue2 = 0;
+				iRightValue1 = 1; iRightValue2 = 0;
+				break;
 
-		case EMovements::Stop:
-		default:
-			iLeftValue1 = 0;  iLeftValue2 = 0;
-			iRightValue1 = 0; iRightValue2 = 0;
-			break;
+			case EMovements::Stop:
+			default:
+				iLeftValue1 = 0;  iLeftValue2 = 0;
+				iRightValue1 = 0; iRightValue2 = 0;
+				break;
+		}
 	}
+	else if (m_CurrentTurnMode == ETurnMode::Both)
+	{
+		switch (m_CurrentMovement)
+		{
+			case EMovements::LeftUp:
+			case EMovements::RightUp:
+			case EMovements::Up:
+				iLeftValue1 = 0;  iLeftValue2 = 1;
+				iRightValue1 = 0; iRightValue2 = 1;
+				break;
+
+			case EMovements::LeftDown:
+			case EMovements::RightDown:
+			case EMovements::Down:
+				iLeftValue1 = 1;  iLeftValue2 = 0;
+				iRightValue1 = 1; iRightValue2 = 0;
+				break;
+
+			case EMovements::Stop:
+			default:
+				iLeftValue1 = 0;  iLeftValue2 = 0;
+				iRightValue1 = 0; iRightValue2 = 0;
+				break;
+		}
+	}
+
 	if (!m_bIsVirtualMotor)
 	{
 		digitalWrite(m_iPinAxisLeft1, iLeftValue1);
@@ -160,27 +188,52 @@ void CMotors::SetMovement(EMovements movement)
 	}
 }
 
-void CMotors::SetSpeed(int iSpeed)
+void CMotors::SetSpeed(int iSpeed, EMovements movement)
 {
-	SetSpeed(iSpeed, iSpeed - 3);	//there is a hardware offset in ENB, so we compesate it by software
+	SetSpeed(iSpeed, iSpeed - 3, movement);			//there is a hardware offset in ENB, so we compesate it by software
 }
 
-void CMotors::SetSpeed(int iSpeedLeft, int iSpeedRight)
+void CMotors::SetSpeed(int iSpeedLeft, int iSpeedRight, EMovements movement)
 {
 	m_iCurrentSpeed = max(iSpeedLeft, iSpeedRight);
-	if (!m_bIsVirtualMotor)
+	if (m_bIsVirtualMotor)
+		return;
+	
+	//slow down speed to avoid sudden stop.
+	if (movement == EMovements::Stop)
 	{
-		if (iSpeedLeft <= SPEED_UNIT)				//slow down speed to avoid sudden stop.
-		{
-			analogWrite(m_iPinENA, SPEED_UNIT / 3);	//ENA needs more time to stop so set smaller speed value
-			analogWrite(m_iPinENB, SPEED_UNIT / 2);
-			delay(50);
-		}
-
-		//after slow down, set final speed
-		analogWrite(m_iPinENA, iSpeedLeft);
-		analogWrite(m_iPinENB, iSpeedRight);
+		analogWrite(m_iPinENA, SPEED_UNIT / 3);	//ENA needs more time to stop so set smaller speed value
+		analogWrite(m_iPinENB, SPEED_UNIT / 2);
+		delay(30);
 	}
+
+	//after slow down, set final speed
+	switch (movement)
+	{
+		case EMovements::LeftUp:
+		case EMovements::LeftDown:
+			if (m_CurrentTurnMode == ETurnMode::Both)
+				iSpeedRight = iSpeedLeft / 3;
+			break;
+
+		case EMovements::RightUp:
+		case EMovements::RightDown:
+			if (m_CurrentTurnMode == ETurnMode::Both)
+				iSpeedLeft = iSpeedRight / 3;
+			break;
+
+		case EMovements::Up:
+		case EMovements::Down:
+			break;
+
+		case EMovements::Stop:
+		default:
+			iSpeedLeft  = 0;
+			iSpeedRight = 0;
+			break;
+	}
+	analogWrite(m_iPinENA, iSpeedLeft);
+	analogWrite(m_iPinENB, iSpeedRight);
 }
 
 #pragma endregion
