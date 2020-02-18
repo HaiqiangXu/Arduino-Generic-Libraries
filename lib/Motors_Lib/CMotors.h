@@ -17,7 +17,7 @@ public:
 		m_bIsVirtualMotor = true;
 	}
 
-	CMotors(int iPinAxisLeft1, int iPinAxisLeft2, int iPinAxisRight1, int iPinAxisRight2, int iPinENA, int iPinENB) : CMotors()
+	CMotors(uint8_t iPinAxisLeft1, uint8_t iPinAxisLeft2, uint8_t iPinAxisRight1, uint8_t iPinAxisRight2, uint8_t iPinENA, uint8_t iPinENB) : CMotors()
 	{
 		m_iPinAxisLeft1 = iPinAxisLeft1;
 		m_iPinAxisLeft2 = iPinAxisLeft2;
@@ -96,8 +96,8 @@ public:
 
 	private:
 		// Fields
-		int m_iPinAxisLeft1, m_iPinAxisLeft2, m_iPinAxisRight1, m_iPinAxisRight2;	//config pins direction
-		int m_iPinENA, m_iPinENB;			//config pins speed
+		uint8_t m_iPinAxisLeft1, m_iPinAxisLeft2, m_iPinAxisRight1, m_iPinAxisRight2;	//config pins direction
+		uint8_t m_iPinENA, m_iPinENB;			//config pins speed
 		EMovements m_CurrentMovement;
 		ESpeedMode m_CurrentSpeedMode;
 		ETurnMode m_CurrentTurnMode;

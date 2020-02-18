@@ -8,8 +8,8 @@ These are the external libraries that are included in Generic-Libraries as [subm
 - [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX) v2.11.0. **NOT** in submodule. 
 
 ## Own libraries
-- Bluetooth_Lib: controls bluetooth modules HC-05 and HC-06 via SoftwareSerial class.
-- Common_Lib: Quick static classes for frequently used functionalities like Sleep() or PowerDown().
+- Bluetooth_Lib: controls bluetooth modules HC-05 and HC-06 via SoftwareSerial library.
+- Common_Lib: quick static classes for frequently used functionalities like Sleep() / PowerDown() or ReadKeyboard() for debugging.
 - Joystick_Lib: controls analog joysticks with 2 axes and a switch button.
 - Melodies_Lib: controls active/passive buzzers to reproduce melodies.
 - Motors_Lib: controls 4 motors splitted into 2 axes through the driver L298N.

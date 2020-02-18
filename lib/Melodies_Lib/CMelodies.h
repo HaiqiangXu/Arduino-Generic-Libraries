@@ -110,7 +110,7 @@ enum class EMelodies {	Fanfarria, DogPower, ThirdPhase, R2D2, Ohhh, Uhoh,
 class CMelodies
 {
 	public:
-		CMelodies(int pin)
+		CMelodies(uint8_t pin)
 		{
 			pinMode(pin, OUTPUT);
 			m_pin = pin;
@@ -119,7 +119,7 @@ class CMelodies
 		void PlayMelody(EMelodies melody);
 
 	private:
-		int m_pin; 		// loudspeaker pin
+		uint8_t m_pin;	// loudspeaker pin
 		void Glis(int note1, int note2, int rate); // Glissando
 		
 		void melody0(); // MELODY_FANFARRIA 0

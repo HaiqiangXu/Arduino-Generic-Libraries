@@ -15,13 +15,13 @@ void setup()
 
     Common.ReadKeyboard();
     Common.Sleep(500);
+    Common.PowerDownInt0();
 
-    CBluetooth bluetooth = CBluetooth(2, 3, EBluetoothAdapter::HC_05);
-    CJoystick joystick = CJoystick(2, 3, 5);
-    CMelodies melodies = CMelodies(2);
+    int i = TrueRandom.random(1, 13);
+    CBluetooth bluetooth = CBluetooth(i, 3, EBluetoothAdapter::HC_05);
+    CJoystick joystick = CJoystick(i, 3, 5);
+    CMelodies melodies = CMelodies(i);
     CMotors motors = CMotors();
-
-    int i = TrueRandom.rand();
 }
 
 void loop()

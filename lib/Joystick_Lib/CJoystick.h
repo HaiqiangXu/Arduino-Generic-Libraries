@@ -7,7 +7,7 @@ class CJoystick
 {
 	public:
 		// Contructors
-		CJoystick(int iPinAxisX, int iPinAxisY, int iPinButton)
+		CJoystick(uint8_t iPinAxisX, uint8_t iPinAxisY, uint8_t iPinButton)
 		{
 			m_iPinAxisX = iPinAxisX;
 			m_iPinAxisY = iPinAxisY;
@@ -33,8 +33,8 @@ class CJoystick
 		};
 	private:
 		// Fields
-		int m_iPinAxisX, m_iPinAxisY;
-		int m_iPinButton;
+		uint8_t m_iPinAxisX, m_iPinAxisY;
+		uint8_t m_iPinButton;
 		EDirection m_DirectionX, m_DirectionY;
 
 		// Private methods

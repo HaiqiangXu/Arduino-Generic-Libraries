@@ -12,7 +12,7 @@ class CBluetooth
 {
 	public:
 		// Constructors
-		CBluetooth(int iPinRx, int iPinTx, EBluetoothAdapter adapter) : m_Serial(iPinRx, iPinTx)
+		CBluetooth(uint8_t iPinRx, uint8_t iPinTx, EBluetoothAdapter adapter) : m_Serial(iPinRx, iPinTx)
 		{
 			m_adapter = adapter;
 		};

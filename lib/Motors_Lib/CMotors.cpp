@@ -108,8 +108,8 @@ void CMotors::ProcessMotors(const byte valueX, const byte valueY)
 
 void CMotors::SetMovement(EMovements movement)
 {
-	int iLeftValue1, iLeftValue2;
-	int iRightValue1, iRightValue2;
+	uint8_t iLeftValue1, iLeftValue2;
+	uint8_t iRightValue1, iRightValue2;
 
 	m_CurrentMovement = movement;
 	if (m_CurrentTurnMode == ETurnMode::One)
