@@ -6,6 +6,7 @@
 #include <CJoystick.h>
 #include <CMelodies.h>
 #include <CMotors.h>
+#include <CSDFilesManager.h>
 
 // Test project just to test if libraries in this project compiles. Expendable class
 void setup()
@@ -22,6 +23,7 @@ void setup()
     CJoystick joystick = CJoystick(i, 3, 5);
     CMelodies melodies = CMelodies(i);
     CMotors motors = CMotors();
+    CSDFilesManager files = CSDFilesManager(4);
 }
 
 void loop()

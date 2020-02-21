@@ -44,7 +44,7 @@
 
 /**
  \def USE_FC16_HW
- Set to 1 to use FC16 hardware module kits.
+ Set to 1 to use FC16 hardware module kits. Compatible with the leds model 1088AS.
  FC16 modules are similar in format to the ICStation modules but are wired differently.
  Modules are identified by a FC-16 designation on the PCB
   */

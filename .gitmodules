@@ -4,3 +4,6 @@
 [submodule "external-libs/TrueRandom"]
 	path = external-libs/TrueRandom
 	url = https://github.com/sirleech/TrueRandom.git
+[submodule "external-libs/FreeRTOS_Library"]
+	path = external-libs/FreeRTOS_Library
+	url = https://github.com/feilipu/Arduino_FreeRTOS_Library.git
