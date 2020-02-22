@@ -16,6 +16,37 @@ int CJoystick::ReadButton()
 	return digitalRead(m_iPinButton);
 }
 
+bool CJoystick::ReadClick()
+{
+	long timeout = 0;
+	while (timeout < MAX_TIMEOUT &&
+		   ReadButton() == LOW)			//read button pressed
+	{
+		delay(50);
+		timeout += 50;
+	}
+	if (timeout > MAX_TIMEOUT)
+		return false;
+
+	while (timeout < MAX_TIMEOUT &&
+		   ReadButton() == HIGH)		//read button released
+	{
+		delay(50);
+		timeout += 50;
+	}
+	return (timeout < MAX_TIMEOUT);
+}
+
+bool CJoystick::ReadDoubleClick()
+{
+	if (!ReadClick())
+		return false;
+	if (!ReadClick())
+		return false;
+	else
+		return true;
+}
+
 // Private methods
 int CJoystick::CalculateValueDirection(EAxis axis)
 {

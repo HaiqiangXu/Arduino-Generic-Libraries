@@ -1,5 +1,7 @@
 #include <arduino.h>
 
+#define MAX_TIMEOUT 1500
+
 enum class EDirection { None, Left, Right, Up, Down };
 enum class EAxis { AxisX, AxisY };
 
@@ -20,6 +22,8 @@ class CJoystick
 		int ReadAxisX();
 		int ReadAxisY();
 		int ReadButton();
+		bool ReadClick();
+		bool ReadDoubleClick();
 
 		// Data accessors
 		EDirection GetDirectionX()
