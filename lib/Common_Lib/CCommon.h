@@ -1,6 +1,12 @@
 #include <arduino.h>
 #include <LowPower.h>
 
+typedef struct
+{
+    uint8_t x;
+    uint8_t y;
+} CoordinateXY;
+
 class CCommon
 {
 public:

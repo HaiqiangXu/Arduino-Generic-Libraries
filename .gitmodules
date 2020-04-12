@@ -7,3 +7,6 @@
 [submodule "external-libs/FreeRTOS_Library"]
 	path = external-libs/FreeRTOS_Library
 	url = https://github.com/feilipu/Arduino_FreeRTOS_Library.git
+[submodule "external-libs/Queue_Library"]
+	path = external-libs/Queue_Library
+	url = https://github.com/SMFSW/Queue.git
