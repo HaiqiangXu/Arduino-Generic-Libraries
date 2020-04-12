@@ -5,6 +5,7 @@ General purpose libraries for final Arduino projects which can include them easi
 These are the external libraries that are included in Generic-Libraries as [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) which links to the original source repositories, and following these [instructions](https://stackoverflow.com/questions/10856138/make-change-to-a-git-submodule-and-keep-the-changes?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa) to separate Generic-Libraries superproject local changes from the original source repository:
 - [FreeRTOS](https://github.com/feilipu/Arduino_FreeRTOS_Library)
 - [Queue](https://github.com/SMFSW/Queue)
+- [LinkedList](https://github.com/ivanseidel/LinkedList.git)
 - [LowPower](https://github.com/rocketscream/Low-Power)
 - [TrueRandom](https://github.com/sirleech/TrueRandom)
 - [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX) v2.11.0. **NOT** in submodule. 

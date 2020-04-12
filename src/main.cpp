@@ -1,5 +1,7 @@
 #include <MD_MAX72XX.h>
 #include <TrueRandom.h>
+#include <cppQueue.h>
+#include <LinkedList.h>
 
 #include <CCommon.h>
 #include <CBluetooth.h>
@@ -19,6 +21,9 @@ void setup()
     Common.PowerDownInt0();
 
     int i = TrueRandom.random(1, 13);
+    Queue q = Queue(sizeof(int), 10, FIFO);
+    LinkedList<int> lnk = LinkedList<int>();
+
     CBluetooth bluetooth = CBluetooth(i, 3, EBluetoothAdapter::HC_05);
     CJoystick joystick = CJoystick(i, 3, 5);
     CMelodies melodies = CMelodies(i);

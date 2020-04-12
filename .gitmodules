@@ -10,3 +10,6 @@
 [submodule "external-libs/Queue_Library"]
 	path = external-libs/Queue_Library
 	url = https://github.com/SMFSW/Queue.git
+[submodule "external-libs/LinkedList_Library"]
+	path = external-libs/LinkedList_Library
+	url = https://github.com/ivanseidel/LinkedList.git
