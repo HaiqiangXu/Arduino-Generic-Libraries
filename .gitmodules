@@ -13,3 +13,6 @@
 [submodule "external-libs/LinkedList_Library"]
 	path = external-libs/LinkedList_Library
 	url = https://github.com/ivanseidel/LinkedList.git
+[submodule "external-libs/SD"]
+	path = external-libs/SD
+	url = https://github.com/arduino-libraries/SD.git
