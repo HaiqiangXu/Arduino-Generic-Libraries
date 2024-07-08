@@ -16,3 +16,6 @@
 [submodule "external-libs/SD"]
 	path = external-libs/SD
 	url = https://github.com/arduino-libraries/SD.git
+[submodule "external-libs/MD_MAX72XX"]
+	path = external-libs/MD_MAX72XX
+	url = https://github.com/MajicDesigns/MD_MAX72XX.git

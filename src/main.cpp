@@ -1,4 +1,4 @@
-#include <MD_MAX72XX.h>
+#include <MD_MAX72xx.h>
 #include <TrueRandom.h>
 #include <cppQueue.h>
 #include <LinkedList.h>
@@ -10,18 +10,20 @@
 #include <CMotors.h>
 #include <CSDFilesManager.h>
 
+#define MAX72XX_TYPE MD_MAX72XX::FC16_HW
+
 // Test project just to test if libraries in this project compiles. Expendable class
 void setup()
 {
     LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-    MD_MAX72XX max7219 = MD_MAX72XX(10);
+    MD_MAX72XX max7219 = MD_MAX72XX(MAX72XX_TYPE, 11, 13, 10, 2);
 
     Common.ReadKeyboard();
     Common.Sleep(500);
     Common.PowerDownInt0();
 
     int i = TrueRandom.random(1, 13);
-    Queue q = Queue(sizeof(int), 10, FIFO);
+    cppQueue q = cppQueue(sizeof(int), 10, FIFO);
     LinkedList<int> lnk = LinkedList<int>();
 
     CBluetooth bluetooth = CBluetooth(i, 3, EBluetoothAdapter::HC_05);
