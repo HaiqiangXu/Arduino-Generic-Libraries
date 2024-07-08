@@ -1,5 +1,5 @@
 /* Based on ToneMelody by Tom Igoe */
-#include <arduino.h>
+#include <Arduino.h>
 
 #pragma region Note_Defines
 // List of tones by Brett Hagman

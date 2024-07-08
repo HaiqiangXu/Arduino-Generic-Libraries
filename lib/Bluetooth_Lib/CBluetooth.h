@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 #include <SoftwareSerial.h>
 
 enum class EBluetoothAdapter { HC_05, HC_06 };	//HC_05 is both Master/Slave. HC_06 only Slave

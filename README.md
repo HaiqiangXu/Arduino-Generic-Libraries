@@ -8,7 +8,7 @@ These are the external libraries that are included in Generic-Libraries as [subm
 - [LinkedList](https://github.com/ivanseidel/LinkedList.git)
 - [LowPower](https://github.com/rocketscream/Low-Power)
 - [TrueRandom](https://github.com/sirleech/TrueRandom)
-- [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX) v2.11.0. **NOT** in submodule. 
+- [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX)
 
 *NOTE:* all credits goes to, of course, the respective owners of these repositories.
 

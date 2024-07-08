@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 
 enum class EMovements { Stop, Up, Down, LeftUp, LeftDown, RightUp, RightDown };
 enum class ESpeedMode { None, Slow, Normal, Fast, Turbo }; // sets max. speed range, instead of 255, to values {0, 55, 110, 165, 220} by multiplying with SPEED_UNIT

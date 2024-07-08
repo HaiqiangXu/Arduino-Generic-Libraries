@@ -1,4 +1,0 @@
-Sources version 2.11.0 comes from [MD_MAX72XX](https://github.com/MajicDesigns/MD_MAX72XX) and all credits goes for them.
-
-The MD_MAX72XX library in this project has been pre-configured with the option **USE_FC16_HW 1** activated as we are using it with MAX7219 ICs in FC-16 boards with led matrix model 1088AS.
-Not in Submodule due to previous change is then not allowed in Generic-Libraries and the idea of using a fork of this library and then modify it and include it as Submodule is discarded right now. Also this way is a lite version of the source repository as it also contains examples and other stuff not really needed and we only one small part of the sources.

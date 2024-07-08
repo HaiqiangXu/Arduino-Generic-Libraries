@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 #include <SD.h>		// this library has to be imported into Platformio IDE from here: https://platformio.org/lib/show/868/SD
 
 #define MAX_FILENAME_LENGTH 11	//8.3 filename format
