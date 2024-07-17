@@ -7,25 +7,25 @@ void CMelodies::PlayMelody(EMelodies melody)
 	switch (melody)
 	{
 		case EMelodies::Fanfarria:
-			melody0();
+			fanfarria();
 			break;
 		case EMelodies::DogPower:
-			melody1();
+			dogPower();
 			break;
 		case EMelodies::ThirdPhase:
-			melody2();
+			thirdPhase();
 			break;
 		case EMelodies::R2D2:
-			melody3();
+			r2D2();
 			break;
 		case EMelodies::Ohhh:
-			melody4();
+			ohhh();
 			break;
 		case EMelodies::Uhoh:
-			melody5();
+			uhoh();
 			break;
 		case EMelodies::R2D2_2:
-			r2D2();
+			r2D2bis();
 			break;	
 		case EMelodies::CloseEncounters:
 			closeEncounters();
@@ -34,7 +34,7 @@ void CMelodies::PlayMelody(EMelodies melody)
 			ariel();
 			break;
 		case EMelodies::Uhoh2:
-			uhoh();
+			uhoh2();
 			break;
 		case EMelodies::Squeak:
 			squeak();
@@ -46,7 +46,7 @@ void CMelodies::PlayMelody(EMelodies melody)
 			catcall();
 			break;
 		case EMelodies::Ohhh2:
-			ohhh();
+			ohhh2();
 			break;
 	}
 }
@@ -55,7 +55,7 @@ void CMelodies::PlayMelody(EMelodies melody)
 
 #pragma region Private methods
 
-void CMelodies::melody0() { // MELODIA_FANFARRIA 0
+void CMelodies::fanfarria() { // MELODIA_FANFARRIA 0
 	tone(m_pin, NOTE_C4, NOTE_NEGRA); delay(NOTE_NEGRA_PAUSA); noTone(m_pin);
 	tone(m_pin, NOTE_G3, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
 	tone(m_pin, NOTE_G3, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
@@ -67,7 +67,7 @@ void CMelodies::melody0() { // MELODIA_FANFARRIA 0
 	delay(10);
 }
 
-void CMelodies::melody1() { // MELODIA_PODER_PERRUNO
+void CMelodies::dogPower() { // MELODIA_PODER_PERRUNO
 	tone(m_pin, NOTE_B4, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
 	tone(m_pin, NOTE_B4, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
 	tone(m_pin, NOTE_B4, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
@@ -77,7 +77,7 @@ void CMelodies::melody1() { // MELODIA_PODER_PERRUNO
 	delay(10);
 }
 
-void CMelodies::melody2() {	// MELODIA_ENCUENTROS_3A_FASE
+void CMelodies::thirdPhase() {	// MELODIA_ENCUENTROS_3A_FASE
 							// Based on http://www.mycontraption.com/sound-effects-with-and-arduino/
 	tone(m_pin, NOTE_AS5, NOTE_NEGRA); delay(NOTE_NEGRA_PAUSA); noTone(m_pin);
 	tone(m_pin, NOTE_C6, NOTE_NEGRA); delay(NOTE_NEGRA_PAUSA); noTone(m_pin);
@@ -101,7 +101,7 @@ void CMelodies::melody2() {	// MELODIA_ENCUENTROS_3A_FASE
 	delay(10);
 }
 
-void CMelodies::melody3() {	// MELODIA_R2D2
+void CMelodies::r2D2() {	// MELODIA_R2D2
 							// Based on http://www.mycontraption.com/sound-effects-with-and-arduino/
 							//http://dtucker.co.uk/make/arduino-using-my-melodyutils-library-for-r2-d2-style-chirps.html
 	tone(m_pin, NOTE_A7, NOTE_CORCHEA); delay(NOTE_CORCHEA_PAUSA); noTone(m_pin);
@@ -123,14 +123,14 @@ void CMelodies::melody3() {	// MELODIA_R2D2
 	delay(10);
 }
 
-void CMelodies::melody4() { // MELODIA_OHHH
+void CMelodies::ohhh() {	// MELODIA_OHHH
 	Glis(NOTE_C6, NOTE_C7, 6);
 	Glis(NOTE_C7, NOTE_C6, 5);
 	//for (int i=1000; i<2000; i=i*1.02) { tone(m_pin,i,10); };
 	//for (int i=2000; i>1000; i=i*.98) { tone(m_pin,i,10); delay(10);};
 }
 
-void CMelodies::melody5() { // MELODIA_UHOH
+void CMelodies::uhoh() {	// MELODIA_UHOH
 	Glis(NOTE_C6, NOTE_DS6, 6);
 	delay(200);
 	Glis(NOTE_DS6, NOTE_CS6, 5);
@@ -139,7 +139,7 @@ void CMelodies::melody5() { // MELODIA_UHOH
 	//for (int i=1244; i>1108; i=i*.99) { tone(m_pin,i,30);  delay(30);};
 }
 
-void CMelodies::r2D2()
+void CMelodies::r2D2bis()
 {
 	Beep(3520,100); //A 
 	Beep(3136,100); //G 
@@ -228,7 +228,7 @@ void CMelodies::ariel()
 	delay(50);
 }
 
-void CMelodies::uhoh()
+void CMelodies::uhoh2()
 {
 	Beep(415,100); //C
     delay(80);
@@ -307,7 +307,7 @@ void CMelodies::catcall()
 	}
 }
 
-void CMelodies::ohhh()
+void CMelodies::ohhh2()
 {
 	for (int i=1000; i<2000; i=i*1.02)
 	{

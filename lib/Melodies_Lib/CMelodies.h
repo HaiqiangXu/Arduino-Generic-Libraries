@@ -122,20 +122,20 @@ class CMelodies
 		uint8_t m_pin;	// loudspeaker pin
 		void Glis(int note1, int note2, int rate); // Glissando
 		
-		void melody0(); // MELODY_FANFARRIA 0
-		void melody1(); // MELODY_PODER_PERRUNO
-		void melody2(); // MELODY_ENCUENTROS_3A_FASE
-		void melody3(); // MELODY_R2D2
-		void melody4(); // MELODY_OHHH
-		void melody5(); // MELODY_UHOH
+		void fanfarria();	// MELODY_FANFARRIA 0
+		void dogPower();	// MELODY_PODER_PERRUNO
+		void thirdPhase();	// MELODY_ENCUENTROS_3A_FASE
+		void r2D2(); // MELODY_R2D2
+		void ohhh(); // MELODY_OHHH
+		void uhoh(); // MELODY_UHOH
 
-		void r2D2();
+		void r2D2bis();
 		void closeEncounters();
 		void ariel();
-		void uhoh();
+		void uhoh2();
 		void squeak();
 		void waka();
 		void catcall();
-		void ohhh();
+		void ohhh2();
 		void Beep(int frequencyHertz, long milliseconds);
 };
