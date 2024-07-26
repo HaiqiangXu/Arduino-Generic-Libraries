@@ -1,10 +1,23 @@
 #include <Arduino.h>
 
+//use it in 8-bit MCUs like Atmel atmega328p chip
 typedef struct
 {
     uint8_t x;
     uint8_t y;
 } CoordinateXY;
+
+typedef struct
+{
+    int x;
+    int y;
+} IntCoordinateXY;
+
+typedef struct
+{
+    long x;
+    long y;
+} LongCoordinateXY;
 
 class CCommon
 {
